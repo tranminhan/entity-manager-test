@@ -1,6 +1,9 @@
 package jpa.mapping.relationship;
 
 import static org.junit.Assert.*;
+
+import java.math.BigDecimal;
+
 import jpa.mapping.basic.PersistenceTest;
 import jpa.mapping.basic.id.auto.EmployeeWithStringId;
 
@@ -29,6 +32,9 @@ public class EmployeeWithRelationshipTest extends PersistenceTest {
         assertNotNull(department2);
         assertEquals("IT", department2.getName());
         assertSame(department, department2);
+
+        String fkId = (String) entityManager.createNativeQuery("select DEPT_ID from EmployeeWithRelationship").getSingleResult();
+        System.out.println("foreign key: " + fkId);
     }
 
 }
