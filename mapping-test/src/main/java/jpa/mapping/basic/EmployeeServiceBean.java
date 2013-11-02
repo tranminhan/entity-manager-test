@@ -13,9 +13,9 @@ public class EmployeeServiceBean implements EmployeeService {
 		this.entityManager = entityManager;
 	}
 
-	public Employee createEmployee(int id, String name, long salary) {
+	public EmployeeBasic createEmployee(int id, String name, long salary) {
 	    entityManager.getTransaction().begin();
-		Employee employee = new Employee();
+		EmployeeBasic employee = new EmployeeBasic();
 		employee.setId(id);
 		employee.setName(name);
 		employee.setSalary(salary);
@@ -26,11 +26,11 @@ public class EmployeeServiceBean implements EmployeeService {
 		return employee;
 	}
 
-	public Collection<Employee> findAllEmployees() {
+	public Collection<EmployeeBasic> findAllEmployees() {
 		return null;
 	}
 
-	public Employee findEmployee(int id) {
+	public EmployeeBasic findEmployee(int id) {
 		// TODO Auto-generated method stub
 		return null;
 	}

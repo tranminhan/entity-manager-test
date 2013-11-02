@@ -4,7 +4,7 @@
 	<persistence-unit name="mapping.basic"
 		transaction-type="RESOURCE_LOCAL">
 		<provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
-		<class>jpa.mapping.basic.Employee</class>
+		<class>jpa.mapping.basic.EmployeeBasic</class>
 		<class>jpa.mapping.basic.id.auto.EmployeeWithAutoId</class>
 		<class>jpa.mapping.basic.id.auto.EmployeeWithStringId</class>
 		<class>jpa.mapping.basic.id.auto.EmployeeWithDateId</class>

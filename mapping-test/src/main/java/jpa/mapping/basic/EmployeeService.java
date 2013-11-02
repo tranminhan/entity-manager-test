@@ -3,9 +3,9 @@ package jpa.mapping.basic;
 import java.util.Collection;
 
 public interface EmployeeService {
-	public Employee createEmployee(int id, String name, long salary);
+	public EmployeeBasic createEmployee(int id, String name, long salary);
 
-	public Collection<Employee> findAllEmployees();
+	public Collection<EmployeeBasic> findAllEmployees();
 
-	public Employee findEmployee(int id);
+	public EmployeeBasic findEmployee(int id);
 }
