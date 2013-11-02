@@ -9,6 +9,10 @@
 		<class>jpa.mapping.basic.id.auto.EmployeeWithStringId</class>
 		<class>jpa.mapping.basic.id.auto.EmployeeWithDateId</class>
 		<class>jpa.mapping.basic.id.auto.EmployeeWithIdFromTable</class>
+		
+		<class>jpa.mapping.relationship.EmployeeWithRelationship</class>
+		<class>jpa.mapping.relationship.Department</class>
+		
 		<properties>
 			<property name="eclipselink.logging.level" value="FINE" />
 			<property name="eclipselink.target-database" value="HSQL" />
