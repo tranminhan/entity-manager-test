@@ -5,6 +5,9 @@
 		transaction-type="RESOURCE_LOCAL">
 		<provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
 		<class>jpa.mapping.basic.Employee</class>
+		<class>jpa.mapping.basic.id.auto.EmployeeWithAutoId</class>
+		<class>jpa.mapping.basic.id.auto.EmployeeWithStringId</class>
+		<class>jpa.mapping.basic.id.auto.EmployeeWithDateId</class>
 		<properties>
 			<property name="eclipselink.logging.level" value="FINE" />
 			<property name="eclipselink.target-database" value="HSQL" />
