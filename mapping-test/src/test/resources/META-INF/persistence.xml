@@ -14,7 +14,8 @@
 		<class>jpa.mapping.relationship.Department</class>
 		<class>jpa.mapping.relationship.ParkingSpace</class>
 		<class>jpa.mapping.relationship.Address</class>
-
+		<class>jpa.mapping.relationship.Company</class>
+		
 		<class>jpa.mapping.relationship.jointable.DepartmentWithMultipleEmployees</class>
 		<class>jpa.mapping.relationship.jointable.EmployeeWithMultipleDepartments</class>
 		<class>jpa.mapping.relationship.jointable.Phone</class>
