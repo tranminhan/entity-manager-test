@@ -4,9 +4,12 @@ import static org.junit.Assert.*;
 
 import java.math.BigDecimal;
 
+import javax.persistence.EntityManager;
+
 import jpa.mapping.basic.PersistenceTest;
 import jpa.mapping.basic.id.auto.EmployeeWithStringId;
 
+import org.apache.commons.lang3.builder.ReflectionToStringBuilder;
 import org.junit.Test;
 
 public class EmployeeWithRelationshipTest extends PersistenceTest {
@@ -37,4 +40,33 @@ public class EmployeeWithRelationshipTest extends PersistenceTest {
         System.out.println("foreign key: " + fkId);
     }
 
+    @Test
+    public void shouldCreateEmployeeWithParkingSpace() {
+        entityManager.getTransaction().begin();
+        EmployeeWithRelationship employee = new EmployeeWithRelationship();
+        employee.setName("employee 2");
+        employee.setSalary(200L);
+
+        ParkingSpace parkingSpace = new ParkingSpace();
+        parkingSpace.setLocation("3E");
+        employee.setParkingSpace(parkingSpace);
+        parkingSpace.setEmployee(employee);
+
+        entityManager.persist(employee);
+        entityManager.getTransaction().commit();
+        
+        assertNotNull(parkingSpace.getId());
+        assertNotNull(parkingSpace.getEmployee());
+
+        EntityManager entityManager2 = entityManagerFactory.createEntityManager();
+
+        ParkingSpace parkingSpace2 = entityManager2.find(ParkingSpace.class, parkingSpace.getId());
+
+        System.out.println(ReflectionToStringBuilder.toString(employee));
+        System.out.println(ReflectionToStringBuilder.toString(parkingSpace2.getEmployee()));
+
+        assertEquals(parkingSpace, parkingSpace2);
+        assertNotNull(parkingSpace2.getEmployee());
+        assertEquals(employee, parkingSpace2.getEmployee());
+    }
 }

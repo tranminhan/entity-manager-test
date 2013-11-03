@@ -12,6 +12,7 @@
 		
 		<class>jpa.mapping.relationship.EmployeeWithRelationship</class>
 		<class>jpa.mapping.relationship.Department</class>
+		<class>jpa.mapping.relationship.ParkingSpace</class>
 		
 		<properties>
 			<property name="eclipselink.logging.level" value="FINE" />
