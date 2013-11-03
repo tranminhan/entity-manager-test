@@ -30,6 +30,16 @@ public class EmployeeWithRelationship {
     @JoinColumn(name = "DEPT_ID")
     Department   department;
 
+    public EmployeeWithRelationship() {
+
+    }
+
+    public EmployeeWithRelationship(String name, Long salary) {
+        super();
+        this.name = name;
+        this.salary = salary;
+    }
+
     public ParkingSpace getParkingSpace() {
         return parkingSpace;
     }

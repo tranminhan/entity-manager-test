@@ -54,7 +54,7 @@ public class EmployeeWithRelationshipTest extends PersistenceTest {
 
         entityManager.persist(employee);
         entityManager.getTransaction().commit();
-        
+
         assertNotNull(parkingSpace.getId());
         assertNotNull(parkingSpace.getEmployee());
 
@@ -68,5 +68,27 @@ public class EmployeeWithRelationshipTest extends PersistenceTest {
         assertEquals(parkingSpace, parkingSpace2);
         assertNotNull(parkingSpace2.getEmployee());
         assertEquals(employee, parkingSpace2.getEmployee());
+    }
+
+    @Test
+    public void shouldCreateMultipleEmployeesForDepartment() {
+        entityManager.getTransaction().begin();
+        EmployeeWithRelationship employee1 = new EmployeeWithRelationship("emp 1", 100L);
+        EmployeeWithRelationship employee2 = new EmployeeWithRelationship("emp 2", 200L);
+
+        Department department = new Department("HR");
+        department.addEmployee(employee1);
+        department.addEmployee(employee2);
+
+        entityManager.persist(employee1);
+        entityManager.persist(employee2);
+
+        entityManager.getTransaction().commit();
+
+        EntityManager entityManager2 = entityManagerFactory.createEntityManager();
+        Department department2 = entityManager2.find(Department.class, department.getName());
+        assertNotNull(department2);
+        assertEquals(department, department2);
+        assertEquals(2, department2.getEmployees().size());
     }
 }
