@@ -91,4 +91,22 @@ public class EmployeeWithRelationshipTest extends PersistenceTest {
         assertEquals(department, department2);
         assertEquals(2, department2.getEmployees().size());
     }
+
+    @Test
+    public void shouldCreateEmployeeWithAddress() {
+        entityManager.getTransaction().begin();
+
+        EmployeeWithRelationship employee1 = new EmployeeWithRelationship("emp 1", 100L);
+        employee1.setAddress(new Address("617 B Second Street", "Petaluma", "CA", "94952"));
+        entityManager.persist(employee1);
+
+        entityManager.getTransaction().commit();
+
+        // verify in another context
+        EntityManager entityManager2 = entityManagerFactory.createEntityManager();
+        EmployeeWithRelationship employee2 = entityManager2.find(EmployeeWithRelationship.class, employee1.getId());
+        assertNotNull(employee2);
+        assertNotNull(employee2.getAddress());
+        assertEquals(employee1.getAddress(), employee2.getAddress());
+    }
 }

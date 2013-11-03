@@ -7,6 +7,7 @@ import javax.persistence.EntityManager;
 import jpa.mapping.basic.PersistenceTest;
 import jpa.mapping.relationship.EmployeeWithRelationship;
 
+import org.apache.commons.lang3.builder.ReflectionToStringBuilder;
 import org.junit.Test;
 
 public class EmployeeWithMultipleDepartmentsTest extends PersistenceTest {
@@ -56,10 +57,15 @@ public class EmployeeWithMultipleDepartmentsTest extends PersistenceTest {
 
         // checking in another context
         EntityManager entityManager2 = entityManagerFactory.createEntityManager();
-
+        System.out.println("entityManager2");
         EmployeeWithMultipleDepartments employee2 = entityManager2.find(EmployeeWithMultipleDepartments.class, employee.getId());
         assertNotNull(employee2);
         assertEquals(2, employee2.getPhones().size());
+
+        System.out.println("before loading phones");
+        for (Phone phone : employee2.getPhones()) {
+            System.out.println(ReflectionToStringBuilder.toString(phone));
+        }
 
         entityManager2.close();
     }

@@ -5,6 +5,7 @@ import java.util.Collection;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
@@ -64,7 +65,7 @@ public class EmployeeWithMultipleDepartments {
             inverseJoinColumns = @JoinColumn(name = "DEP_ID"))
     Collection<DepartmentWithMultipleEmployees> departments;
 
-    @OneToMany(cascade = { CascadeType.PERSIST })
+    @OneToMany(cascade = { CascadeType.PERSIST }, fetch = FetchType.LAZY)
     Collection<Phone>                           phones;
 
     public Collection<Phone> getPhones() {

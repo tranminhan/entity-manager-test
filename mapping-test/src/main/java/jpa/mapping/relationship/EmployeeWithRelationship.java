@@ -1,6 +1,7 @@
 package jpa.mapping.relationship;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -23,12 +24,23 @@ public class EmployeeWithRelationship {
     String       name;
     Long         salary;
 
+    public Address getAddress() {
+        return address;
+    }
+
+    public void setAddress(Address address) {
+        this.address = address;
+    }
+
     @OneToOne(cascade = { CascadeType.PERSIST })
     ParkingSpace parkingSpace;
 
     @ManyToOne(cascade = { CascadeType.PERSIST })
     @JoinColumn(name = "DEPT_ID")
     Department   department;
+
+    @Embedded
+    Address      address;
 
     public EmployeeWithRelationship() {
 
