@@ -9,10 +9,14 @@
 		<class>jpa.mapping.basic.id.auto.EmployeeWithStringId</class>
 		<class>jpa.mapping.basic.id.auto.EmployeeWithDateId</class>
 		<class>jpa.mapping.basic.id.auto.EmployeeWithIdFromTable</class>
-		
+
 		<class>jpa.mapping.relationship.EmployeeWithRelationship</class>
 		<class>jpa.mapping.relationship.Department</class>
 		<class>jpa.mapping.relationship.ParkingSpace</class>
+
+		<class>jpa.mapping.relationship.jointable.DepartmentWithMultipleEmployees</class>
+		<class>jpa.mapping.relationship.jointable.EmployeeWithMultipleDepartments</class>
+		<class>jpa.mapping.relationship.jointable.Phone</class>
 		
 		<properties>
 			<property name="eclipselink.logging.level" value="FINE" />
