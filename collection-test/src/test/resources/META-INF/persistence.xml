@@ -13,18 +13,30 @@
 		<class>jpa.mapping.relationship.ordering.DepartmentWithListOfEntities</class>
 		<class>jpa.mapping.relationship.ordering.EmployeeInOrder</class>
 
+		<class>jpa.mapping.relationship.ordering.persistent.PrintQueue</class>
+		<class>jpa.mapping.relationship.ordering.persistent.PrintJob</class>
+
 		<properties>
 			<property name="javax.persistence.jdbc.driver" value="org.hsqldb.jdbcDriver" />
 			<property name="javax.persistence.jdbc.url" value="jdbc:hsqldb:file:mapping.db" />
 			<property name="javax.persistence.jdbc.user" value="" />
 			<property name="javax.persistence.jdbc.password" value="" />
-
 			<property name="hibernate.dialect" value="org.hibernate.dialect.HSQLDialect" />
+
+<!-- 
+			<property name="javax.persistence.jdbc.driver" value="org.apache.derby.jdbc.EmbeddedDriver" />
+			<property name="javax.persistence.jdbc.url" value="jdbc:derby:memory:EmployeesDB;create=true" />
+			<property name="javax.persistence.jdbc.user" value="" />
+			<property name="javax.persistence.jdbc.password" value="" />
+			<property name="hibernate.dialect" value="org.hibernate.dialect.DerbyTenSevenDialect" />
+ -->
+
 			<property name="hibernate.hbm2ddl.auto" value="create-drop" />
 			<property name="hibernate.ejb.naming_strategy" value="org.hibernate.cfg.DefaultNamingStrategy" />
 			<property name="hibernate.connection.charSet" value="UTF-8" />
 			<property name="hibernate.connection.autocommit" value="false" />
 			<property name="hibernate.show_sql" value="true" />
+
 		</properties>
 
 	</persistence-unit>
