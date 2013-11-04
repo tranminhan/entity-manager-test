@@ -15,7 +15,7 @@
 		<class>jpa.mapping.relationship.ParkingSpace</class>
 		<class>jpa.mapping.relationship.Address</class>
 		<class>jpa.mapping.relationship.Company</class>
-		
+
 		<class>jpa.mapping.relationship.jointable.DepartmentWithMultipleEmployees</class>
 		<class>jpa.mapping.relationship.jointable.EmployeeWithMultipleDepartments</class>
 		<class>jpa.mapping.relationship.jointable.Phone</class>
@@ -23,14 +23,15 @@
 		<class>jpa.mapping.collection.EmployeeWithVacation</class>
 		<class>jpa.mapping.collection.VacationEntry</class>
 		<class>jpa.mapping.collection.PhoneAsElement</class>
-		
+
 		<properties>
-			<property name="eclipselink.logging.level" value="FINE" />
-			<property name="eclipselink.target-database" value="HSQL" />
 			<property name="javax.persistence.jdbc.driver" value="org.hsqldb.jdbcDriver" />
 			<property name="javax.persistence.jdbc.url" value="jdbc:hsqldb:file:mapping.db" />
 			<property name="javax.persistence.jdbc.user" value="" />
 			<property name="javax.persistence.jdbc.password" value="" />
+
+			<property name="eclipselink.logging.level" value="FINE" />
+			<property name="eclipselink.target-database" value="HSQL" />
 			<property name="eclipselink.ddl-generation" value="create-tables" />
 		</properties>
 	</persistence-unit>
