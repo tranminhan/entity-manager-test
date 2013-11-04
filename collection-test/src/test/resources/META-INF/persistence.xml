@@ -9,7 +9,10 @@
 		<class>jpa.mapping.collection.EmployeeWithVacation</class>
 		<class>jpa.mapping.collection.VacationEntry</class>
 		<class>jpa.mapping.collection.PhoneAsElement</class>
-		
+
+		<class>jpa.mapping.relationship.ordering.DepartmentWithListOfEntities</class>
+		<class>jpa.mapping.relationship.ordering.EmployeeInOrder</class>
+
 		<properties>
 			<property name="javax.persistence.jdbc.driver" value="org.hsqldb.jdbcDriver" />
 			<property name="javax.persistence.jdbc.url" value="jdbc:hsqldb:file:mapping.db" />
