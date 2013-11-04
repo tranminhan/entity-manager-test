@@ -20,6 +20,10 @@
 		<class>jpa.mapping.relationship.jointable.EmployeeWithMultipleDepartments</class>
 		<class>jpa.mapping.relationship.jointable.Phone</class>
 
+		<class>jpa.mapping.collection.EmployeeWithVacation</class>
+		<class>jpa.mapping.collection.VacationEntry</class>
+		<class>jpa.mapping.collection.PhoneAsElement</class>
+		
 		<properties>
 			<property name="eclipselink.logging.level" value="FINE" />
 			<property name="eclipselink.target-database" value="HSQL" />
