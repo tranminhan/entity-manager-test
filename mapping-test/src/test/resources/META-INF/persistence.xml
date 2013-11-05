@@ -1,6 +1,7 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<persistence version="1.0"
-	xmlns="http://java.sun.com/xml/ns/persistence">
+<?xml version="1.0" encoding="UTF-8" ?>
+<persistence xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd"
+	version="2.0" xmlns="http://java.sun.com/xml/ns/persistence">
 	<persistence-unit name="mapping.basic"
 		transaction-type="RESOURCE_LOCAL">
 		<provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
@@ -31,6 +32,7 @@
 		<class>jpa.mapping.relationship.ordering.persistent.PrintJob</class>
 
 		<class>jpa.mapping.collection.map.EmployeeWithMapOfPhones</class>
+		<class>jpa.mapping.collection.map.EmployeeWithMapEnumeratedKey</class>
 
 		<properties>
 			<!-- <property name="javax.persistence.jdbc.driver" value="org.hsqldb.jdbcDriver" 
