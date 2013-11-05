@@ -34,6 +34,12 @@
 		<class>jpa.mapping.collection.map.EmployeeWithMapOfPhones</class>
 		<class>jpa.mapping.collection.map.EmployeeWithMapEnumeratedKey</class>
 
+		<class>jpa.mapping.relationship.map.EmployeeInCubicle</class>
+		<class>jpa.mapping.relationship.map.DepartmentWithMapOfEmployees</class>
+
+		<class>jpa.mapping.relationship.map.attribute.DepartmentWithMapKeyedByAttribute</class>
+		<class>jpa.mapping.relationship.map.attribute.EmployeeWithKeyAttribute</class>
+
 		<properties>
 			<!-- <property name="javax.persistence.jdbc.driver" value="org.hsqldb.jdbcDriver" 
 				/> <property name="javax.persistence.jdbc.url" value="jdbc:hsqldb:file:mapping.db" 
