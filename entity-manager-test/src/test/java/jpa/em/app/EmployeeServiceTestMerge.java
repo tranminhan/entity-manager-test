@@ -56,4 +56,25 @@ public class EmployeeServiceTestMerge extends ContainerAndPersistentTest {
         assertEquals("Peter 2nd", employee2.getName());
     }
 
+    @Test
+    public void shouldSetRelationshipToNullAfterMerge() throws NotSupportedException, SystemException, IllegalStateException, SecurityException, HeuristicMixedException, HeuristicRollbackException,
+            RollbackException {
+        Employee employee = employeeService.newEmployee("Peter", new Address("617 B Second Street", "CA", "Petaluma", "94952"));
+        assertNotNull(employee);
+        assertNotNull(employee.getAddress());
+
+        employee.setAddress(null);
+
+        // find the employee from db
+        Employee employee2 = em.find(Employee.class, employee.getId());
+        assertNotNull(employee2);
+        assertEquals("Peter", employee2.getName());
+
+        // merge the detached
+        tx.begin();
+        Employee employee3 = em.merge(employee);
+        assertNotNull(employee3);
+        assertNull(employee3.getAddress());
+        tx.commit();
+    }
 }
