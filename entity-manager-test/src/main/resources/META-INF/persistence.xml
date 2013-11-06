@@ -4,15 +4,15 @@
 	version="2.0" xmlns="http://java.sun.com/xml/ns/persistence">
 	<persistence-unit name="entity.manager">
 		<provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
-		<jta-data-source>datasource</jta-data-source>		
+		<jta-data-source>datasource</jta-data-source>	
+		
+		<class>jpa.em.app.Employee</class>	
 		<properties>
-		<!-- 
+		
 			<property name="javax.persistence.jdbc.driver" value="org.apache.derby.jdbc.EmbeddedDriver" />
 			<property name="javax.persistence.jdbc.url" value="jdbc:derby:memory:EmployeesDB;create=true" />
-			<property name="javax.persistence.jdbc.user" value="" />
-			<property name="javax.persistence.jdbc.password" value="" />
 			<property name="eclipselink.target-database" value="Derby" />
- -->
+ 
 			<property name="eclipselink.logging.level" value="FINE" />
 			<property name="eclipselink.ddl-generation" value="create-tables" />
 		</properties>

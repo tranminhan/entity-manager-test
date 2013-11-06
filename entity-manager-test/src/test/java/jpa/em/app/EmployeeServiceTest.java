@@ -7,6 +7,8 @@ import javax.ejb.TransactionAttribute;
 import javax.ejb.embeddable.EJBContainer;
 import javax.naming.NamingException;
 import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
 import javax.transaction.HeuristicMixedException;
 import javax.transaction.HeuristicRollbackException;
 import javax.transaction.NotSupportedException;
@@ -46,6 +48,14 @@ public class EmployeeServiceTest extends ContainerAndPersistentTest {
         Employee employee4 = entityManager.find(Employee.class, employee.getId());
         System.out.println(ReflectionToStringBuilder.toString(employee4));
         assertNotNull(employee4);
+
+//        EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("entity.manager");
+//        entityManager = entityManagerFactory.createEntityManager();
+//        entityManager.getTransaction().begin();
+//        Employee employee5 = entityManager.find(Employee.class, employee.getId());
+//        entityManager.getTransaction().commit();
+//        System.out.println(ReflectionToStringBuilder.toString(employee5));
+//        assertNotNull(employee5);
     }
 
     @Test
