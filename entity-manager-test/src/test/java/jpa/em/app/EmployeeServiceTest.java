@@ -28,7 +28,12 @@ public class EmployeeServiceTest extends ContainerAndPersistentTest {
         System.out.println(ReflectionToStringBuilder.toString(employee));
 
         Employee employee2 = employeeService.findEmployee(employee.getId());
+        System.out.println(ReflectionToStringBuilder.toString(employee2));
         assertNotNull(employee2);
+        
+        Employee employee3 = em.find(Employee.class, employee.getId());
+        System.out.println(ReflectionToStringBuilder.toString(employee3));
+        assertNotNull(employee2);        
     }
 
     @Ignore
