@@ -38,6 +38,43 @@ public class EmployeeService {
         }
     }
 
+    public Employee newEmployee(String name, Address address) {
+        try {
+            tx.begin();
+            EntityManager em = emf.createEntityManager();
+            Employee employee = new Employee(name);
+            employee.setAddress(address);
+            em.persist(employee);
+            tx.commit();
+            em.close();
+
+            return employee;
+        }
+        catch (Exception e) {
+            System.out.println(e);
+            throw new RuntimeException(e);
+        }
+    }
+
+    public Employee newEmployeeAfterPersist(String name, Address address) {
+        try {
+            tx.begin();
+            EntityManager em = emf.createEntityManager();
+            Employee employee = new Employee(name);
+            em.persist(employee);
+
+            employee.setAddress(address);
+            tx.commit();
+            em.close();
+
+            return employee;
+        }
+        catch (Exception e) {
+            System.out.println(e);
+            throw new RuntimeException(e);
+        }
+    }
+
     public Employee findEmployee(Integer id) {
         EntityManager em = emf.createEntityManager();
         Employee employee = em.find(Employee.class, id);

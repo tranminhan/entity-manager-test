@@ -1,8 +1,10 @@
 package jpa.em.app;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.TableGenerator;
 
 @Entity
@@ -16,6 +18,9 @@ public class Employee {
     @GeneratedValue(generator = "Emp_Gen")
     Integer id;
     String  name;
+
+    @ManyToOne(cascade = CascadeType.PERSIST)
+    Address address;
 
     public Employee(String name) {
         super();
@@ -36,5 +41,13 @@ public class Employee {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public Address getAddress() {
+        return address;
+    }
+
+    public void setAddress(Address address) {
+        this.address = address;
     }
 }
