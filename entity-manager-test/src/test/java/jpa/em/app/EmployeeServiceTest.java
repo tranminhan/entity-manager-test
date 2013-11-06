@@ -72,4 +72,52 @@ public class EmployeeServiceTest extends ContainerAndPersistentTest {
         System.out.println(ReflectionToStringBuilder.toString(employee3));
         assertNotNull(employee3);
     }
+
+    @Test
+    public void shouldNotEditExistingEmployeeBecauseOfNoJoinTransaction() throws NotSupportedException, SystemException, IllegalStateException, SecurityException, HeuristicMixedException,
+            HeuristicRollbackException,
+            RollbackException {
+        // create entity
+        tx.begin();
+        EntityManager entityManager = emf.createEntityManager();
+        Employee employee = new Employee("Peter");
+        entityManager.persist(employee);
+        tx.commit();
+        System.out.println(ReflectionToStringBuilder.toString(employee));
+
+        // entity becomes detached,
+        // edit entity
+        Employee employee2 = employeeService.changeNameWithNoJoin(employee, "Janis");
+        assertNotNull(employee2);
+        assertEquals("Janis", employee2.getName());
+
+        // find entity again to confirm change is not persisted
+        Employee employee3 = employeeService.findEmployee(employee2.getId());
+        assertNotNull(employee3);
+        assertEquals("Peter", employee3.getName());
+    }
+
+    @Test
+    public void shouldEditExistingEmployeeBecauseOfJoinTransaction() throws NotSupportedException, SystemException, IllegalStateException, SecurityException, HeuristicMixedException,
+            HeuristicRollbackException,
+            RollbackException {
+        // create entity
+        tx.begin();
+        EntityManager entityManager = emf.createEntityManager();
+        Employee employee = new Employee("Peter");
+        entityManager.persist(employee);
+        tx.commit();
+        System.out.println(ReflectionToStringBuilder.toString(employee));
+
+        // entity becomes detached,
+        // edit entity
+        Employee employee2 = employeeService.changeNameWithJoinTransaction(employee, "Janis");
+        assertNotNull(employee2);
+        assertEquals("Janis", employee2.getName());
+
+        // find entity again to confirm change is not persisted
+        Employee employee3 = employeeService.findEmployee(employee2.getId());
+        assertNotNull(employee3);
+        assertEquals("Janis", employee3.getName());
+    }
 }

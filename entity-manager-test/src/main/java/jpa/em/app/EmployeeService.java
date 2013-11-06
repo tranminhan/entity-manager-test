@@ -60,5 +60,38 @@ public class EmployeeService {
             throw new RuntimeException(e);
         }
     }
-    
+
+    public Employee changeNameWithNoJoin(Employee employee, String newName) {
+        try {
+            EntityManager em = emf.createEntityManager();
+            employee.setName(newName);
+            em.persist(employee);
+            em.close();
+
+            return employee;
+        }
+        catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public Employee changeNameWithJoinTransaction(Employee employee, String newName) {
+        try {
+
+            EntityManager em = emf.createEntityManager();
+            employee = em.merge(employee);
+            employee.setName(newName);
+
+            tx.begin();
+            em.joinTransaction();
+            tx.commit();
+            em.close();
+
+            return employee;
+        }
+        catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
+
 }
