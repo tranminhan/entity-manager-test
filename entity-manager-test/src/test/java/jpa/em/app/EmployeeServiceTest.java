@@ -48,14 +48,6 @@ public class EmployeeServiceTest extends ContainerAndPersistentTest {
         Employee employee4 = entityManager.find(Employee.class, employee.getId());
         System.out.println(ReflectionToStringBuilder.toString(employee4));
         assertNotNull(employee4);
-
-//        EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("entity.manager");
-//        entityManager = entityManagerFactory.createEntityManager();
-//        entityManager.getTransaction().begin();
-//        Employee employee5 = entityManager.find(Employee.class, employee.getId());
-//        entityManager.getTransaction().commit();
-//        System.out.println(ReflectionToStringBuilder.toString(employee5));
-//        assertNotNull(employee5);
     }
 
     @Test

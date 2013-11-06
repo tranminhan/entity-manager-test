@@ -17,7 +17,7 @@ import org.junit.Before;
 
 public class ContainerAndPersistentTest {
 
-    @PersistenceContext
+    @PersistenceContext(unitName = "entity.manager")
     protected EntityManager        em;
 
     @PersistenceUnit(unitName = "entity.manager")
@@ -33,6 +33,12 @@ public class ContainerAndPersistentTest {
             p.put("datasource", "new://Resource?type=DataSource");
             p.put("datasource.JdbcDriver", "org.apache.derby.jdbc.EmbeddedDriver");
             p.put("datasource.JdbcUrl", "jdbc:derby:memory:EmployeesDB;create=true");
+            
+            p.put("nonJtaDatasource", "new://Resource?type=DataSource");
+            p.put("nonJtaDatasource.JdbcDriver", "org.apache.derby.jdbc.EmbeddedDriver");
+            p.put("nonJtaDatasource.JdbcUrl", "jdbc:derby:memory:EmployeesDB;create=true");
+            p.put("nonJtaDatasource.JtaManaged", false);       
+            
             // <property name="javax.persistence.jdbc.driver" value="org.apache.derby.jdbc.EmbeddedDriver" />
             // <property name="javax.persistence.jdbc.url" value="jdbc:derby:memory:EmployeesDB;create=true" />
             // <property name="javax.persistence.jdbc.user" value="" />
