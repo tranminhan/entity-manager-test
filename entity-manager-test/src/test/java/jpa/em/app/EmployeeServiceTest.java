@@ -5,6 +5,7 @@ import static org.junit.Assert.*;
 import javax.ejb.EJB;
 import javax.ejb.embeddable.EJBContainer;
 import javax.naming.NamingException;
+import javax.persistence.EntityManager;
 
 import org.apache.commons.lang3.builder.ReflectionToStringBuilder;
 import org.junit.Before;
@@ -30,10 +31,15 @@ public class EmployeeServiceTest extends ContainerAndPersistentTest {
         Employee employee2 = employeeService.findEmployee(employee.getId());
         System.out.println(ReflectionToStringBuilder.toString(employee2));
         assertNotNull(employee2);
-        
+
         Employee employee3 = em.find(Employee.class, employee.getId());
         System.out.println(ReflectionToStringBuilder.toString(employee3));
-        assertNotNull(employee2);        
+        assertNotNull(employee2);
+
+        EntityManager entityManager = emf.createEntityManager();
+        Employee employee4 = entityManager.find(Employee.class, employee.getId());
+        System.out.println(ReflectionToStringBuilder.toString(employee4));
+        assertNotNull(employee4);
     }
 
     @Ignore
