@@ -47,12 +47,12 @@ public class EmployeeService {
 
     public Employee changeName(Integer id, String newName) {
         try {
+            tx.begin();
             EntityManager em = emf.createEntityManager();
             Employee employee = em.find(Employee.class, id);
-            // tx.begin();
             employee.setName(newName);
-            // tx.commit();
             em.close();
+            tx.commit();
 
             return employee;
         }
@@ -60,4 +60,5 @@ public class EmployeeService {
             throw new RuntimeException(e);
         }
     }
+    
 }

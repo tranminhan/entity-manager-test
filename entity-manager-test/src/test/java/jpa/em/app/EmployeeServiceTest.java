@@ -3,9 +3,15 @@ package jpa.em.app;
 import static org.junit.Assert.*;
 
 import javax.ejb.EJB;
+import javax.ejb.TransactionAttribute;
 import javax.ejb.embeddable.EJBContainer;
 import javax.naming.NamingException;
 import javax.persistence.EntityManager;
+import javax.transaction.HeuristicMixedException;
+import javax.transaction.HeuristicRollbackException;
+import javax.transaction.NotSupportedException;
+import javax.transaction.RollbackException;
+import javax.transaction.SystemException;
 
 import org.apache.commons.lang3.builder.ReflectionToStringBuilder;
 import org.junit.Before;
@@ -42,13 +48,15 @@ public class EmployeeServiceTest extends ContainerAndPersistentTest {
         assertNotNull(employee4);
     }
 
-    @Ignore
     @Test
-    public void shouldEditExistingEmployee() {
-        em.getTransaction().begin();
+    public void shouldEditExistingEmployee() throws NotSupportedException, SystemException, IllegalStateException, SecurityException, HeuristicMixedException, HeuristicRollbackException,
+            RollbackException {
+        tx.begin();
+        EntityManager entityManager = emf.createEntityManager();
         Employee employee = new Employee("Peter");
-        em.persist(employee);
-        em.getTransaction().commit();
+        entityManager.persist(employee);
+        tx.commit();
+        System.out.println(ReflectionToStringBuilder.toString(employee));
 
         Employee newEmployee = em.find(Employee.class, employee.getId());
         assertNotNull(newEmployee);
@@ -56,5 +64,10 @@ public class EmployeeServiceTest extends ContainerAndPersistentTest {
 
         Employee employee2 = employeeService.changeName(employee.getId(), "Hand");
         System.out.println(ReflectionToStringBuilder.toString(employee2));
+
+        entityManager = emf.createEntityManager();
+        Employee employee3 = entityManager.find(Employee.class, employee2.getId());
+        System.out.println(ReflectionToStringBuilder.toString(employee3));
+        assertNotNull(employee3);
     }
 }
