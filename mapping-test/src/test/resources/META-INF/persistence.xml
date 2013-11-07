@@ -58,6 +58,12 @@
         <class>jpa.inheritance.pertable.PTFullTimeEmployee</class>
         <class>jpa.inheritance.pertable.PTPartTimeEmployee</class>
         
+        <class>jpa.inheritance.mix.MixEmployee</class>
+        <class>jpa.inheritance.mix.MixContractEmployee</class>
+        <class>jpa.inheritance.mix.MixCompanyEmployee</class>
+        <class>jpa.inheritance.mix.MixFullTimeEmployee</class>
+        <class>jpa.inheritance.mix.MixPartTimeEmployee</class>
+        
 		<properties>
 			<!-- <property name="javax.persistence.jdbc.driver" value="org.hsqldb.jdbcDriver" 
 				/> <property name="javax.persistence.jdbc.url" value="jdbc:hsqldb:file:mapping.db" 
