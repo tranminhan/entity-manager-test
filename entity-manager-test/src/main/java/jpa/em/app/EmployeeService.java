@@ -20,6 +20,24 @@ public class EmployeeService {
 
     @PersistenceUnit(unitName = "entity.manager")
     EntityManagerFactory emf;
+    
+    public Employee newEmployee(String name, Long salary) {
+        try {
+            tx.begin();
+            EntityManager em = emf.createEntityManager();
+            Employee employee = new Employee(name);
+            employee.setSalary(salary);
+            em.persist(employee);
+            tx.commit();
+            em.close();
+
+            return employee;
+        }
+        catch (Exception e) {
+            System.out.println(e);
+            throw new RuntimeException(e);
+        }
+    }
 
     public Employee newEmployee(String name) {
         try {

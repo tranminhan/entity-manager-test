@@ -11,6 +11,7 @@ import javax.persistence.PostUpdate;
 import javax.persistence.PrePersist;
 import javax.persistence.PreUpdate;
 import javax.persistence.TableGenerator;
+import javax.persistence.Version;
 import javax.validation.constraints.NotNull;
 
 import org.apache.commons.lang3.builder.ReflectionToStringBuilder;
@@ -26,12 +27,17 @@ public class Employee {
             allocationSize = 1)
     @GeneratedValue(generator = "Emp_Gen")
     Integer id;
-    
+
     @NotNull
     String  name;
 
     @ManyToOne(cascade = CascadeType.PERSIST)
     Address address;
+
+    Long    salary;
+    
+    @Version
+    Integer version;
 
     public Employee(String name) {
         super();
@@ -80,5 +86,17 @@ public class Employee {
     @PostUpdate
     public void postUpdate() {
         System.out.println("PostUpdate: " + ReflectionToStringBuilder.toString(this));
+    }
+
+    public Long getSalary() {
+        return salary;
+    }
+
+    public void setSalary(Long salary) {
+        this.salary = salary;
+    }
+
+    public Integer getVersion() {
+        return version;
     }
 }
