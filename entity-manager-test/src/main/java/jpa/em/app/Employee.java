@@ -2,12 +2,21 @@ package jpa.em.app;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.EntityListeners;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.PostPersist;
+import javax.persistence.PostUpdate;
+import javax.persistence.PrePersist;
+import javax.persistence.PreUpdate;
 import javax.persistence.TableGenerator;
+import javax.validation.constraints.NotNull;
+
+import org.apache.commons.lang3.builder.ReflectionToStringBuilder;
 
 @Entity
+@EntityListeners({ EmployeeDebugListener.class })
 public class Employee {
     @Id
     @TableGenerator(name = "Emp_Gen",
@@ -17,6 +26,8 @@ public class Employee {
             allocationSize = 1)
     @GeneratedValue(generator = "Emp_Gen")
     Integer id;
+    
+    @NotNull
     String  name;
 
     @ManyToOne(cascade = CascadeType.PERSIST)
@@ -49,5 +60,25 @@ public class Employee {
 
     public void setAddress(Address address) {
         this.address = address;
+    }
+
+    @PrePersist
+    public void prePersist() {
+        System.out.println("PrePersist: " + ReflectionToStringBuilder.toString(this));
+    }
+
+    @PostPersist
+    public void postPersist() {
+        System.out.println("PostPersist: " + ReflectionToStringBuilder.toString(this));
+    }
+
+    @PreUpdate
+    public void preUpdate() {
+        System.out.println("PreUpdate: " + ReflectionToStringBuilder.toString(this));
+    }
+
+    @PostUpdate
+    public void postUpdate() {
+        System.out.println("PostUpdate: " + ReflectionToStringBuilder.toString(this));
     }
 }
