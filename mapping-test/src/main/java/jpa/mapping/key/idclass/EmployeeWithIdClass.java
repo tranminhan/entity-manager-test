@@ -1,4 +1,4 @@
-package jpa.mapping.idclass;
+package jpa.mapping.key.idclass;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
