@@ -39,37 +39,40 @@
 
 		<class>jpa.mapping.relationship.map.attribute.DepartmentWithMapKeyedByAttribute</class>
 		<class>jpa.mapping.relationship.map.attribute.EmployeeWithKeyAttribute</class>
-		
+
 		<class>jpa.inheritance.singletable.STEmployee</class>
 		<class>jpa.inheritance.singletable.STContractEmployee</class>
 		<class>jpa.inheritance.singletable.STCompanyEmployee</class>
 		<class>jpa.inheritance.singletable.STFullTimeEmployee</class>
 		<class>jpa.inheritance.singletable.STPartTimeEmployee</class>
 
-        <class>jpa.inheritance.jointable.JTEmployee</class>
-        <class>jpa.inheritance.jointable.JTContractEmployee</class>
-        <class>jpa.inheritance.jointable.JTCompanyEmployee</class>
-        <class>jpa.inheritance.jointable.JTFullTimeEmployee</class>
-        <class>jpa.inheritance.jointable.JTPartTimeEmployee</class>
-        
-        <class>jpa.inheritance.pertable.PTEmployee</class>
-        <class>jpa.inheritance.pertable.PTContractEmployee</class>
-        <class>jpa.inheritance.pertable.PTCompanyEmployee</class>
-        <class>jpa.inheritance.pertable.PTFullTimeEmployee</class>
-        <class>jpa.inheritance.pertable.PTPartTimeEmployee</class>
-        
-        <class>jpa.inheritance.mix.MixEmployee</class>
-        <class>jpa.inheritance.mix.MixContractEmployee</class>
-        <class>jpa.inheritance.mix.MixCompanyEmployee</class>
-        <class>jpa.inheritance.mix.MixFullTimeEmployee</class>
-        <class>jpa.inheritance.mix.MixPartTimeEmployee</class>
-        
-        <class>jpa.mapping.embedded.EmployeeWithComplexEmbedded</class>
-        <class>jpa.mapping.embedded.EmbeddedPhone</class>
-        
-        <class>jpa.mapping.key.idclass.EmployeeWithIdClass</class>
-        <class>jpa.mapping.key.embeddedId.EmployeeWithEmbeddedId</class>
-        
+		<class>jpa.inheritance.jointable.JTEmployee</class>
+		<class>jpa.inheritance.jointable.JTContractEmployee</class>
+		<class>jpa.inheritance.jointable.JTCompanyEmployee</class>
+		<class>jpa.inheritance.jointable.JTFullTimeEmployee</class>
+		<class>jpa.inheritance.jointable.JTPartTimeEmployee</class>
+
+		<class>jpa.inheritance.pertable.PTEmployee</class>
+		<class>jpa.inheritance.pertable.PTContractEmployee</class>
+		<class>jpa.inheritance.pertable.PTCompanyEmployee</class>
+		<class>jpa.inheritance.pertable.PTFullTimeEmployee</class>
+		<class>jpa.inheritance.pertable.PTPartTimeEmployee</class>
+
+		<class>jpa.inheritance.mix.MixEmployee</class>
+		<class>jpa.inheritance.mix.MixContractEmployee</class>
+		<class>jpa.inheritance.mix.MixCompanyEmployee</class>
+		<class>jpa.inheritance.mix.MixFullTimeEmployee</class>
+		<class>jpa.inheritance.mix.MixPartTimeEmployee</class>
+
+		<class>jpa.mapping.embedded.EmployeeWithComplexEmbedded</class>
+		<class>jpa.mapping.embedded.EmbeddedPhone</class>
+
+		<class>jpa.mapping.key.idclass.EmployeeWithIdClass</class>
+		<class>jpa.mapping.key.embeddedId.EmployeeWithEmbeddedId</class>
+
+		<class>jpa.mapping.key.derived.EmployeeHistory</class>
+		<class>jpa.mapping.key.derived.EmployeeAsOwner</class>
+
 		<properties>
 			<!-- <property name="javax.persistence.jdbc.driver" value="org.hsqldb.jdbcDriver" 
 				/> <property name="javax.persistence.jdbc.url" value="jdbc:hsqldb:file:mapping.db" 
