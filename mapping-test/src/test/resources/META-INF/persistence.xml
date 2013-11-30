@@ -71,6 +71,7 @@
 		<class>jpa.mapping.key.embeddedId.EmployeeWithEmbeddedId</class>
 
 		<class>jpa.mapping.key.derived.EmployeeHistory</class>
+		<class>jpa.mapping.key.derived.EmployeeHistoryWithRedundantId</class>
 		<class>jpa.mapping.key.derived.EmployeeAsOwner</class>
 
 		<properties>
