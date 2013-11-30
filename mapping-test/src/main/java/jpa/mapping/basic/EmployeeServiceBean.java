@@ -35,4 +35,10 @@ public class EmployeeServiceBean implements EmployeeService {
 		return null;
 	}
 
+    public void removeEmployee(EmployeeBasic employeeBasic) {
+        entityManager.getTransaction().begin();        
+        entityManager.refresh(employeeBasic);
+        entityManager.getTransaction().commit();        
+    }
+
 }

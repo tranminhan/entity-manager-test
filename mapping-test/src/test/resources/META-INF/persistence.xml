@@ -67,6 +67,8 @@
         <class>jpa.mapping.embedded.EmployeeWithComplexEmbedded</class>
         <class>jpa.mapping.embedded.EmbeddedPhone</class>
         
+        <class>jpa.mapping.idclass.EmployeeWithIdClass</class>
+        
 		<properties>
 			<!-- <property name="javax.persistence.jdbc.driver" value="org.hsqldb.jdbcDriver" 
 				/> <property name="javax.persistence.jdbc.url" value="jdbc:hsqldb:file:mapping.db" 
