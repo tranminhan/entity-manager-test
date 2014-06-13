@@ -2,23 +2,21 @@ package jpa.query;
 
 import static org.junit.Assert.*;
 
-import java.util.List;
-
 import javax.ejb.EJB;
-import javax.persistence.TypedQuery;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
 
 import jpa.em.app.Address;
 import jpa.em.app.ContainerAndPersistentTest;
+import jpa.em.app.Department;
 import jpa.em.app.Employee;
 import jpa.em.app.EmployeeService;
 
 import org.junit.Before;
 import org.junit.Test;
 
-public class QuerySingleAttributeTest extends ContainerAndPersistentTest {
+public class QueryMultipleRootTest extends ContainerAndPersistentTest {
     @EJB
     EmployeeService employeeService;
 
@@ -32,17 +30,25 @@ public class QuerySingleAttributeTest extends ContainerAndPersistentTest {
     }
 
     @Test
-    public void shouldQueryEmployeeName() {
+    public void shouldQueryDepartmentHaveEmployees() {
         CriteriaBuilder criteriaBuilder = em.getCriteriaBuilder();
-        CriteriaQuery<String> criteriaQuery = criteriaBuilder.createQuery(String.class);
+        CriteriaQuery<Department> criteriaQuery = criteriaBuilder.createQuery(Department.class);
+        Root<Department> dept = criteriaQuery.from(Department.class);
         Root<Employee> emp = criteriaQuery.from(Employee.class);
-        CriteriaQuery<String> employeeName =
-                criteriaQuery.select(emp.<String> get("name"));
 
-        TypedQuery<String> result = em.createQuery(employeeName);
-        List<String> resultList = result.getResultList();
-        System.out.println(resultList.size());
-        assertEquals(3, resultList.size());
+        criteriaQuery.select(dept)
+                .distinct(true)
+                .where(criteriaBuilder.equal(dept, emp.get("department")));
+    }
+    
+    @Test
+    public void shouldQueryEmployeeInNewYork() {
+        CriteriaBuilder criteriaBuilder = em.getCriteriaBuilder();
+        CriteriaQuery<Employee> criteriaQuery = criteriaBuilder.createQuery(Employee.class);
+        Root<Employee> emp = criteriaQuery.from(Employee.class);
+
+        criteriaQuery.select(emp)
+                .where(criteriaBuilder.equal(emp.get("address").get("city"), "New York"));
     }
 
 }

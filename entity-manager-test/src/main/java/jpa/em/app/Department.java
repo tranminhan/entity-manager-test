@@ -1,4 +1,4 @@
-package jpa.mapping.key.derived;
+package jpa.em.app;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -6,22 +6,13 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
-public class DepartmentWithDependent {
+public class Department {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     int    id;
 
     String name;
-
-    public DepartmentWithDependent() {
-        super();
-    }
-
-    public DepartmentWithDependent(String name) {
-        super();
-        this.name = name;
-    }
 
     public String getName() {
         return name;
@@ -33,6 +24,15 @@ public class DepartmentWithDependent {
 
     public int getId() {
         return id;
+    }
+
+    public Department(String name) {
+        super();
+        this.name = name;
+    }
+
+    public Department() {
+        super();
     }
 
 }
