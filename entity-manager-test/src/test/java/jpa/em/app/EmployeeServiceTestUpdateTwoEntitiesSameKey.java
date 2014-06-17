@@ -26,10 +26,10 @@ public class EmployeeServiceTestUpdateTwoEntitiesSameKey extends
 	EmployeeService employeeService;
 
 	@Test(expected = OptimisticLockException.class)
-	public void shouldUpdateEntitiesWithSameKey() throws NotSupportedException,
-			SystemException, IllegalStateException, SecurityException,
-			HeuristicMixedException, HeuristicRollbackException,
-			RollbackException {
+	public void shouldNotUpdateEntitiesWithSameKey()
+			throws NotSupportedException, SystemException,
+			IllegalStateException, SecurityException, HeuristicMixedException,
+			HeuristicRollbackException, RollbackException {
 		// create an entity
 		Employee employee = employeeService.newEmployee("Peter");
 		assertNotNull(employee);
