@@ -3,6 +3,7 @@ package jpa.em.app;
 import static org.junit.Assert.*;
 
 import javax.ejb.EJB;
+import javax.persistence.OptimisticLockException;
 import javax.transaction.HeuristicMixedException;
 import javax.transaction.HeuristicRollbackException;
 import javax.transaction.NotSupportedException;
@@ -24,7 +25,7 @@ public class EmployeeServiceTestUpdateTwoEntitiesSameKey extends
 	@EJB
 	EmployeeService employeeService;
 
-	@Test
+	@Test(expected = OptimisticLockException.class)
 	public void shouldUpdateEntitiesWithSameKey() throws NotSupportedException,
 			SystemException, IllegalStateException, SecurityException,
 			HeuristicMixedException, HeuristicRollbackException,
