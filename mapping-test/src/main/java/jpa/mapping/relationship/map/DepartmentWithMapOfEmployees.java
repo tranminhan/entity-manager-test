@@ -6,6 +6,7 @@ import java.util.Map;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.MapKeyColumn;
 import javax.persistence.OneToMany;
 
 @Entity
@@ -14,6 +15,7 @@ public class DepartmentWithMapOfEmployees {
     String                         name;
 
     @OneToMany(mappedBy = "department", cascade = { CascadeType.PERSIST })
+    @MapKeyColumn(name = "CUBE_ID")
     Map<String, EmployeeInCubicle> employees;
 
     public void addEmployee(String cube, EmployeeInCubicle employee) {

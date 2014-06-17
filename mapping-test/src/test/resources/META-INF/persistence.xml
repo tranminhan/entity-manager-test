@@ -73,7 +73,14 @@
 		<class>jpa.mapping.key.derived.EmployeeHistory</class>
 		<class>jpa.mapping.key.derived.EmployeeHistoryWithRedundantId</class>
 		<class>jpa.mapping.key.derived.EmployeeAsOwner</class>
+		
+		<class>jpa.mapping.relationship.map.relationship_state.Project2</class>
+        <class>jpa.mapping.relationship.map.relationship_state.Employee2</class>
 
+<!-- 
+		<class>jpa.mapping.key.derived.compound.DepartmentWithDependent</class>
+		<class>jpa.mapping.key.derived.compound.ProjectAsDependent</class>
+ -->
 		<properties>
 			<!-- <property name="javax.persistence.jdbc.driver" value="org.hsqldb.jdbcDriver" 
 				/> <property name="javax.persistence.jdbc.url" value="jdbc:hsqldb:file:mapping.db" 

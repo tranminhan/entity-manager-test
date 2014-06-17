@@ -40,7 +40,7 @@ public class EmployeeServiceBeanTest {
         assertEquals((Long) 1L, count);
     }
 
-    @Test
+    @Test(expected = IllegalArgumentException.class)
     public void shouldNotMergeDetachedEmployee() {
         entityManager.getTransaction().begin();
         EmployeeBasic employee = new EmployeeBasic();
@@ -48,29 +48,27 @@ public class EmployeeServiceBeanTest {
         employee.setName("Peter");
         entityManager.persist(employee);
         entityManager.getTransaction().commit();
-        
+
         entityManager.getTransaction().begin();
         entityManager.remove(employee);
         entityManager.merge(employee);
         entityManager.getTransaction().commit();
     }
-    
+
     @Test
-    public void shouldNotPersistDetachedEmployee() {
+    public void shouldAllowToPersistRemovedEmployee() {
         entityManager.getTransaction().begin();
         EmployeeBasic employee = new EmployeeBasic();
         employee.setId(4);
         employee.setName("Peter");
         entityManager.persist(employee);
         entityManager.getTransaction().commit();
-        
+
         entityManager.getTransaction().begin();
         entityManager.remove(employee);
         entityManager.persist(employee);
         entityManager.getTransaction().commit();
     }
-    
-    
 
     @Test
     public void shouldMergeDetachedEmployee() {
@@ -80,14 +78,33 @@ public class EmployeeServiceBeanTest {
         employee.setName("Peter");
         entityManager.persist(employee);
         entityManager.getTransaction().commit();
-        
+
         entityManager.getTransaction().begin();
-        entityManager.remove(employee);        
+        entityManager.remove(employee);
         entityManager.getTransaction().commit();
-        
+
         entityManager.getTransaction().begin();
-        employee = entityManager.merge(employee);        
+        employee = entityManager.merge(employee);
         entityManager.getTransaction().commit();
         System.out.println(ReflectionToStringBuilder.toString(employee));
+    }
+
+    @Test
+    public void shouldPersistSerializableComponent() {
+        EmployeeNotes notes = new EmployeeNotes();
+        notes.setNote1("note 1");
+        notes.setNote2("note 2");
+
+        entityManager.getTransaction().begin();
+        EmployeeBasic employee = new EmployeeBasic();
+        employee.setId(5);
+        employee.setName("Peter");
+        employee.setNotes(notes);
+        entityManager.persist(employee);
+        entityManager.getTransaction().commit();
+        
+        EmployeeBasic employee2 = entityManager.find(EmployeeBasic.class, employee.getId());
+        assertNotNull(employee2);
+        System.out.println(ReflectionToStringBuilder.toString(employee2));
     }
 }

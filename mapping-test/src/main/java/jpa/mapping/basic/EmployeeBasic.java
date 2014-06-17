@@ -5,34 +5,44 @@ import javax.persistence.Id;
 
 @Entity
 public class EmployeeBasic {
-	@Id
-	Integer id;
+    @Id
+    Integer id;
 
-	String name;
+    String  name;
 
-	Long salary;
+    Long    salary;
 
-	public Integer getId() {
-		return id;
-	}
+    public Integer getId() {
+        return id;
+    }
 
-	public void setId(Integer id) {
-		this.id = id;
-	}
+    public void setId(Integer id) {
+        this.id = id;
+    }
 
-	public String getName() {
-		return name;
-	}
+    public String getName() {
+        return name;
+    }
 
-	public void setName(String name) {
-		this.name = name;
-	}
+    public void setName(String name) {
+        this.name = name;
+    }
 
-	public Long getSalary() {
-		return salary;
-	}
+    public Long getSalary() {
+        return salary;
+    }
 
-	public void setSalary(Long salary) {
-		this.salary = salary;
-	}
+    public void setSalary(Long salary) {
+        this.salary = salary;
+    }
+
+    EmployeeNotes notes;
+
+    public EmployeeNotes getNotes() {
+        return notes;
+    }
+
+    public void setNotes(EmployeeNotes notes) {
+        this.notes = notes;
+    }
 }
