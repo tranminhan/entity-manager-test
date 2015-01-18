@@ -1,0 +1,10 @@
+----------------------------------------------------------------
+Sun Jan 18 10:51:35 ICT 2015:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.8.2.2 - (1181258): instance a816c00e-014a-fb2a-d370-00000b630370 
+on database directory memory:/Users/atran/workspace/github/spring-transaction-jdbc/EmployeesDB  with class loader sun.misc.Launcher$AppClassLoader@3479404a 
+Loaded from file:/Users/atran/.m2/repository/org/apache/derby/derby/10.8.2.2/derby-10.8.2.2.jar
+java.vendor=Oracle Corporation
+java.runtime.version=1.7.0_65-b17
+user.dir=/Users/atran/workspace/github/spring-transaction-jdbc
+derby.system.home=null
+Database Class Loader started - derby.database.classpath=''

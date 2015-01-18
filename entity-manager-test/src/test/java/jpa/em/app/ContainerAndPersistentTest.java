@@ -1,30 +1,28 @@
 package jpa.em.app;
 
-import java.util.Properties;
+import org.junit.After;
+import org.junit.Before;
 
 import javax.annotation.Resource;
 import javax.ejb.embeddable.EJBContainer;
 import javax.naming.NamingException;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
 import javax.persistence.PersistenceContext;
 import javax.persistence.PersistenceUnit;
 import javax.transaction.UserTransaction;
-
-import org.junit.After;
-import org.junit.Before;
+import java.util.Properties;
 
 public class ContainerAndPersistentTest {
 
     @PersistenceContext(unitName = "entity.manager")
-    protected EntityManager        em;
+    protected EntityManager em;
 
     @PersistenceUnit(unitName = "entity.manager")
     protected EntityManagerFactory emf;
 
     @Resource
-    UserTransaction                tx;
+    UserTransaction tx;
 
     @Before
     public void setup() {
@@ -33,12 +31,12 @@ public class ContainerAndPersistentTest {
             p.put("datasource", "new://Resource?type=DataSource");
             p.put("datasource.JdbcDriver", "org.apache.derby.jdbc.EmbeddedDriver");
             p.put("datasource.JdbcUrl", "jdbc:derby:memory:EmployeesDB;create=true");
-            
+
             p.put("nonJtaDatasource", "new://Resource?type=DataSource");
             p.put("nonJtaDatasource.JdbcDriver", "org.apache.derby.jdbc.EmbeddedDriver");
             p.put("nonJtaDatasource.JdbcUrl", "jdbc:derby:memory:EmployeesDB;create=true");
-            p.put("nonJtaDatasource.JtaManaged", false);       
-            
+            p.put("nonJtaDatasource.JtaManaged", false);
+
             // <property name="javax.persistence.jdbc.driver" value="org.apache.derby.jdbc.EmbeddedDriver" />
             // <property name="javax.persistence.jdbc.url" value="jdbc:derby:memory:EmployeesDB;create=true" />
             // <property name="javax.persistence.jdbc.user" value="" />
@@ -46,8 +44,7 @@ public class ContainerAndPersistentTest {
             // <property name="eclipselink.target-database" value="Derby" />
 
             EJBContainer.createEJBContainer(p).getContext().bind("inject", this);
-        }
-        catch (NamingException e) {
+        } catch (NamingException e) {
             e.printStackTrace();
             throw new RuntimeException(e);
         }
